@@ -1,19 +1,18 @@
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import styled from 'styled-components';
 import { Ionicons } from '@expo/vector-icons';
+
+const Container = styled.TouchableOpacity`
+  flex: 1;
+  align-items: center;
+  padding-top: 15px;
+`;
 
 const TabButton = ({ isActive, name, onPress }) => {
   return (
-    <TouchableOpacity activeOpacity={1} onPress={onPress} style={styles.container}>
+    <Container activeOpacity={1} onPress={onPress}>
       <Ionicons name={isActive ? name : `${name}-outline`} size={24} color='black' />
-    </TouchableOpacity>
+    </Container>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    paddingTop: 15,
-  },
-});
 export default TabButton;

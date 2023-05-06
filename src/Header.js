@@ -1,31 +1,31 @@
-import { View, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import styled from 'styled-components';
+
+const Container = styled.View`
+  background-color: #fff;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-vertical: 10px;
+`;
+
+const Title = styled.Text`
+  font-size: 22px;
+  font-weight: bold;
+`;
+
+const Util = styled.View`
+  flex-direction: row;
+`;
 
 const Header = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>친구</Text>
-      <View style={styles.util}>
+    <Container>
+      <Title>친구</Title>
+      <Util>
         <Ionicons name='ios-settings-outline' size={24} color='#000' />
-      </View>
-    </View>
+      </Util>
+    </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingVertical: 10,
-  },
-  title: {
-    fontSize: 22,
-    fontWeight: 'bold',
-  },
-  util: {
-    flexDirection: 'row',
-  },
-});
 
 export default Header;

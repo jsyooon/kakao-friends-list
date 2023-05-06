@@ -1,15 +1,13 @@
-import { StyleSheet, View } from 'react-native';
+import styled from 'styled-components';
+
+const Container = styled.View`
+  width: 100%;
+  height: 0.5px;
+  background-color: #eee;
+`;
 
 const Division = () => {
-  return <View style={styles.container}></View>;
+  return <Container />;
 };
-
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: 0.5,
-    backgroundColor: '#eee',
-  },
-});
 
 export default Division;

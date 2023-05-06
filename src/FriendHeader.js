@@ -1,30 +1,30 @@
-import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import styled from 'styled-components';
 import Margin from './Margin';
+
+const Container = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Title = styled.Text`
+  color: #555;
+`;
 
 const FriendHeader = ({ isOpen, onPress, length }) => {
   return (
     <View>
-      <View style={styles.container}>
-        <Text style={styles.title}>친구 {length}</Text>
+      <Container>
+        <Title>친구 {length}</Title>
         <TouchableOpacity onPress={onPress}>
           <Ionicons name={`chevron-${isOpen ? 'up' : 'down'}-sharp`} size={20} color='#ddd' />
         </TouchableOpacity>
-      </View>
+      </Container>
       <Margin height={15} />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  title: {
-    color: '#555',
-  },
-});
 
 export default FriendHeader;

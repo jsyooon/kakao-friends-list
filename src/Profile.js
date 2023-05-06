@@ -1,42 +1,46 @@
-import { StyleSheet, View, Image, Text } from 'react-native';
+import styled, { css } from 'styled-components';
+
+const Container = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
+const ImageContainer = styled.Image`
+  ${(props) => {
+    const size = props.isMine ? 60 : 50;
+    return css`
+      width: ${size}px;
+      height: ${size}px;
+      border-radius: ${size * 0.4}px;
+    `;
+  }}
+`;
+
+const TextContainer = styled.View`
+  margin-left: 10px;
+`;
+
+const Name = styled.Text`
+  font-weight: bold;
+  font-size: ${(props) => (props.isMine ? 17 : 15)}px;
+`;
+
+const Message = styled.Text`
+  color: #888;
+  font-size: ${(props) => (props.isMine ? 15 : 13)}px;
+  margin-top: ${(props) => (props.isMine ? 8 : 6)}px;
+`;
 
 const Profile = ({ uri, name, message = '', isMine = false }) => {
   return (
-    <View style={styles.container}>
-      <Image source={{ uri }} style={styles.image(isMine)} />
-      <View style={styles.textContainer}>
-        <Text style={styles.name(isMine)}>{name}</Text>
-        {message && <Text style={styles.message}>{message}</Text>}
-      </View>
-    </View>
+    <Container>
+      <ImageContainer source={{ uri }} isMine={isMine} />
+      <TextContainer>
+        <Name isMine={isMine}>{name}</Name>
+        {message && <Message size={isMine ? 15 : 13}>{message}</Message>}
+      </TextContainer>
+    </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  image(isMine) {
-    return {
-      width: isMine ? 60 : 50,
-      height: isMine ? 60 : 50,
-      borderRadius: 20,
-    };
-  },
-  textContainer: {
-    marginLeft: 10,
-  },
-  name(isMine) {
-    return {
-      fontWeight: 'bold',
-      fontSize: isMine ? 17 : 15,
-    };
-  },
-  message: {
-    color: '#888',
-    marginTop: 8,
-  },
-});
 
 export default Profile;
